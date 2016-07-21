@@ -11,6 +11,7 @@
 		65BCE8181D4060AA0008F27F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BCE8171D4060AA0008F27F /* SignUpViewController.swift */; };
 		65BCE81A1D4060BC0008F27F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BCE8191D4060BC0008F27F /* SignInViewController.swift */; };
 		65BCE81C1D4064000008F27F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BCE81B1D4064000008F27F /* File.swift */; };
+		65BCE81E1D4084290008F27F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 65BCE81D1D4084290008F27F /* .gitignore */; };
 		EC8AC0551D3E0FB5005F90F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8AC0541D3E0FB5005F90F1 /* AppDelegate.swift */; };
 		EC8AC0571D3E0FB5005F90F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8AC0561D3E0FB5005F90F1 /* HomeViewController.swift */; };
 		EC8AC05A1D3E0FB5005F90F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8AC0581D3E0FB5005F90F1 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		65BCE8171D4060AA0008F27F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		65BCE8191D4060BC0008F27F /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		65BCE81B1D4064000008F27F /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		65BCE81D1D4084290008F27F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		75E000A1EF8501D098A13BB8 /* Pods_Exire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8AC0511D3E0FB5005F90F1 /* Exire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8AC0541D3E0FB5005F90F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		EC8AC0481D3E0FB5005F90F1 = {
 			isa = PBXGroup;
 			children = (
+				65BCE81D1D4084290008F27F /* .gitignore */,
 				EC8AC0531D3E0FB5005F90F1 /* Exire */,
 				EC8AC0521D3E0FB5005F90F1 /* Products */,
 				1FBDE9B5475601C5AB2D712F /* Pods */,
@@ -177,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BCE81E1D4084290008F27F /* .gitignore in Resources */,
 				EC8AC0621D3E0FB5005F90F1 /* LaunchScreen.storyboard in Resources */,
 				EC8AC05F1D3E0FB5005F90F1 /* Assets.xcassets in Resources */,
 				EC8AC05A1D3E0FB5005F90F1 /* Main.storyboard in Resources */,
