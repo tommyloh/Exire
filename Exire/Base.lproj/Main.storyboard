@@ -34,7 +34,7 @@
                                         <rect key="frame" x="181" y="0.0" width="419" height="30"/>
                                         <state key="normal" title="Sign up!"/>
                                         <connections>
-                                            <segue destination="3bw-eC-PQT" kind="show" identifier="HomeSegue" id="HxK-gw-DfM"/>
+                                            <segue destination="3bw-eC-PQT" kind="show" identifier="" id="HxK-gw-DfM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -85,7 +85,7 @@
         <!--Home View Controller-->
         <scene sceneID="mRJ-re-9ec">
             <objects>
-                <viewController id="8DX-jV-qBF" customClass="HomeViewController" customModule="Exire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeNavigationController" id="8DX-jV-qBF" customClass="HomeViewController" customModule="Exire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GZs-xC-ZHf"/>
                         <viewControllerLayoutGuide type="bottom" id="0WK-Au-g2k"/>
@@ -371,12 +371,13 @@
                     <connections>
                         <outlet property="emailTextField" destination="XcQ-we-Ccg" id="8wH-nc-Xld"/>
                         <outlet property="passwordTextField" destination="vqI-cs-YV9" id="Ln4-hg-Iis"/>
+                        <segue destination="8DX-jV-qBF" kind="show" identifier="HomeSegue" id="NcU-sG-tSv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7k-x6-rKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="weB-Jh-UyD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1150" y="-1402"/>
+            <point key="canvasLocation" x="-338" y="-1440"/>
         </scene>
         <!--Create View Controller-->
         <scene sceneID="xMU-jH-tJR">
@@ -459,7 +460,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="74" id="2oM-eD-pmG"/>
                                         </constraints>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -664,7 +665,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="No4-S8-TST"/>
+        <segue reference="NcU-sG-tSv"/>
         <segue reference="nPu-dp-7C4"/>
     </inferredMetricsTieBreakers>
 </document>
