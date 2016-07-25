@@ -417,7 +417,13 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7t-5o-P9d">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Create an event" id="Dfu-78-wvH"/>
+                                    <navigationItem title="Create an event" id="Dfu-78-wvH">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ovl-a8-Kzu">
+                                            <connections>
+                                                <action selector="onCancelButtonPressed:" destination="y1F-y8-AZ0" id="c6W-M9-4ei"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OCD-If-pHp">
@@ -461,7 +467,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="HI." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-9J-TlW">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="/*" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-9J-TlW">
                                         <rect key="frame" x="0.0" y="21" width="560" height="74"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -472,47 +478,32 @@
                                     </textView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDA-Rq-J92">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fDA-Rq-J92">
                                 <rect key="frame" x="0.0" y="388" width="600" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58B-P5-cJo">
-                                        <rect key="frame" x="0.0" y="0.0" width="71" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58B-P5-cJo">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBa-Gd-XdX">
-                                        <rect key="frame" x="71" y="0.0" width="529" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="71" id="F0a-Nf-xph"/>
-                                            <constraint firstAttribute="width" constant="198" id="OwB-uV-8Ad"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="F0a-Nf-xph"/>
-                                                <exclude reference="OwB-uV-8Ad"/>
-                                            </mask>
-                                        </variation>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please select a category for your event" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sNx-j0-LjF">
+                                        <rect key="frame" x="0.0" y="21" width="600" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <outlet property="dataSource" destination="y1F-y8-AZ0" id="mZF-TW-DVI"/>
-                                            <outlet property="delegate" destination="y1F-y8-AZ0" id="88g-cY-nDw"/>
+                                            <outlet property="delegate" destination="y1F-y8-AZ0" id="OHQ-7i-d15"/>
                                         </connections>
-                                    </pickerView>
+                                    </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="nBa-Gd-XdX" firstAttribute="leading" secondItem="58B-P5-cJo" secondAttribute="trailing" id="Iuc-N6-hKC"/>
                                     <constraint firstAttribute="height" constant="50" id="ge9-N2-DSB"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Iuc-N6-hKC"/>
-                                    </mask>
-                                </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Byb-JP-5Ex">
                                 <rect key="frame" x="0.0" y="468" width="600" height="130"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mH7-oO-SlM">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image.php" translatesAutoresizingMaskIntoConstraints="NO" id="mH7-oO-SlM">
                                         <rect key="frame" x="100" y="0.0" width="400" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="wl3-el-xzh"/>
@@ -577,8 +568,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="categoryTextField" destination="sNx-j0-LjF" id="wHD-Y5-CLx"/>
+                        <outlet property="descriptionTextView" destination="z4L-9J-TlW" id="mzp-fu-pjG"/>
+                        <outlet property="eventDateTimeTextField" destination="Lpd-y2-tfy" id="ygd-2n-qce"/>
+                        <outlet property="eventLocationTextField" destination="ANq-mJ-LSb" id="cIN-N8-8K0"/>
+                        <outlet property="eventNameTextField" destination="EnA-CZ-0hl" id="jpd-iH-MaN"/>
                         <outlet property="imageView" destination="mH7-oO-SlM" id="AdI-Qz-0sr"/>
-                        <outlet property="pickerView" destination="nBa-Gd-XdX" id="8LZ-5d-ywa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geQ-4R-92w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -724,6 +719,9 @@
             <point key="canvasLocation" x="-372" y="-726"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="image.php" width="476" height="137"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nPu-dp-7C4"/>
         <segue reference="No4-S8-TST"/>
