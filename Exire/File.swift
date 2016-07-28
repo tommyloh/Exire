@@ -12,12 +12,7 @@ import UIKit
 class User: NSObject {
     
     var ProfileImageUrl : String?
-    // key = snapshot.key
-//    
-//    if let ProfileImageUrl = dict["profileImageUrl"] as? String{
-//        profileImageUrl = ProfileImageUrl
-//    }
-//    
+ 
     class func signIn(uid: String){
         NSUserDefaults.standardUserDefaults().setValue(uid, forKeyPath: "uid")
     }
@@ -33,5 +28,8 @@ class User: NSObject {
     class func currentUserUid() -> String?{
         return NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
     }
-    
+
+    class url{
+    var category: String!
+    }
 }
