@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Firebase
 class User: NSObject {
     
     var ProfileImageUrl : String?
@@ -29,7 +29,4 @@ class User: NSObject {
         return NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
     }
 
-    class url{
-    var category: String!
-    }
 }

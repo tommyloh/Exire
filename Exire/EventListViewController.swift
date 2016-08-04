@@ -11,6 +11,7 @@ import Firebase
 
 class EventListViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var segmentController: UISegmentedControl!
     var category: String!
     var listOfImages = [String]()
     var firebaseDatabase = FIRDatabase.database().reference()
@@ -18,7 +19,7 @@ class EventListViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         self.title = category
         
         firebaseDatabase.child(category).observeEventType(.ChildAdded, withBlock: { (snapshot) in
@@ -27,13 +28,13 @@ class EventListViewController: UIViewController,UICollectionViewDelegate,UIColle
                 if let eventDetail = snapshot.value as? [String: AnyObject]{
                     if let eventImagePicture = eventDetail["EventPictureURL"] as? String {
                         self.listOfImages.append(eventImagePicture)
-                       
+                        
                     }
                     if let eventImageName = eventDetail["EventName"] as? String {
                         self.listOfName.append(eventImageName)
                         self.collectionView.reloadData()
                     }
-                    }
+                }
             })
             })
         {
@@ -71,8 +72,22 @@ class EventListViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destination = segue.destinationViewController as? DetailViewController{
-                destination.Category = category
-
+            destination.Category = category
+            
         }
+    }
+    @IBAction func onSegmentedControlPressed(sender: UISegmentedControl) {
+        
+        if segmentController.selectedSegmentIndex == 0{
+            
+        }
+        if segmentController.selectedSegmentIndex == 1{
+            
+        }
+        
+        
+        
+        
+        
     }
 }

@@ -17,7 +17,7 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var eventLocationTextField: UITextField!
     @IBOutlet weak var eventNameTextField: UITextField!
     @IBOutlet var imageView: UIImageView!
-    
+    var data = [String]()
     var pickerData: [String] = [String]()
     let picker = UIPickerView()
     let firebaseDatabaseRef = FIRDatabase.database().reference()
@@ -32,6 +32,7 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
         categoryTextField.inputView = picker
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        self.navigationController?.navigationBarHidden = true
         
     }
    
@@ -56,28 +57,21 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
         imageView.image = pickedImage
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
-    
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
-    
-    
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryTextField.text = pickerData[row]
-       
-    }
-    
+       }
     @IBAction func onPostEventPressed(sender: UIButton) {
         
         let randomUID = NSUUID().UUIDString
@@ -99,28 +93,20 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }else if let eventImageUrl = metadata?.downloadURL()?.absoluteString {
                     let values = ["EventpictureURL" : eventImageUrl]
                     let detailedValues = ["Event Date And Time": eventDateTimeValue, "Event Location": eventLocationValue,"EventPictureURL" : eventImageUrl, "EventName":eventNameValue,"EventDescription":eventDescription]
-                    self.firebaseDatabaseRef.child("users").child(User.currentUserUid()!).child("Customer_picture").setValue(values)
-                    // create a new event ref
+                    self.firebaseDatabaseRef.child("users").child(User.currentUserUid()!).child("Customer_picture").childByAutoId().setValue(values)
+                    
                     let newEventRef = self.firebaseDatabaseRef.child("events").childByAutoId()
                     newEventRef.setValue(detailedValues)
-                    
-                    
                     self.firebaseDatabaseRef.child(pickerValueText!).child(newEventRef.key).setValue(true)
                 }
             })
             
         }
-        
-        
-        
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    
     @IBAction func onCancelButtonPressed(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
-        
-    }
+     
+}
 
 }
-//98758002
