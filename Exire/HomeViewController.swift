@@ -10,8 +10,7 @@ import UIKit
 import Firebase
 
 class HomeViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
-    //    var listofImagesKey = [String]()
-    //    var listOfImages = [String]()
+    
     var listOfEvents = [Event]()
     var firebaseDatabase = FIRDatabase.database().reference()
     @IBOutlet weak var scrollView: UIScrollView!
@@ -21,7 +20,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, UICollectionVi
         super.viewDidLoad()
         scrollView.delegate = self
         firebaseDatabase.child("events").observeEventType(.ChildAdded, withBlock: { (snapshot) in
-
+            
             if let event = Event(snapshot: snapshot){
                 self.listOfEvents.append(event)
                 self.collectionView.reloadData()
@@ -98,13 +97,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, UICollectionVi
             
             if let indexPath = collectionView.indexPathsForSelectedItems()?.first{
                 let event = listOfEvents[indexPath.row]
-                destination.eventUid = event.uid
-            
+                destination.eventUID = event.uid
+                //                print(event.uid)
+                
             }
-            
-            
-            
-            
             
         }
     }

@@ -12,6 +12,7 @@ import Firebase
 class EventListViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentController: UISegmentedControl!
+    var event : detailEvent?
     var category: String!
     var listOfImages = [String]()
     var firebaseDatabase = FIRDatabase.database().reference()
@@ -19,29 +20,18 @@ class EventListViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = category
-        
-        firebaseDatabase.child(category).observeEventType(.ChildAdded, withBlock: { (snapshot) in
-            let eventKey = snapshot.key
-            self.firebaseDatabase.child("events").child(eventKey).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                if let eventDetail = snapshot.value as? [String: AnyObject]{
-                    if let eventImagePicture = eventDetail["EventPictureURL"] as? String {
-                        self.listOfImages.append(eventImagePicture)
-                        
-                    }
-                    if let eventImageName = eventDetail["EventName"] as? String {
-                        self.listOfName.append(eventImageName)
-                        self.collectionView.reloadData()
-                    }
+        firebaseDatabase.child(category).observeEventType(.ChildAdded, withBlock: {(snapshot) in
+            let eventkey = snapshot.key
+            self.firebaseDatabase.child("events").child(eventkey).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if let event = detailEvent(snapshot: snapshot){
+                    self.event = event
+                    self.listOfImages.append(event.imageUrl!)
+                    self.listOfName.append(event.imageName!)
+                    
+                    self.collectionView.reloadData()
                 }
             })
-            })
-        {
-            (error) in
-            print(error.localizedDescription)
-        }
-        
+        })
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -72,8 +62,8 @@ class EventListViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destination = segue.destinationViewController as? DetailViewController{
-            destination.Category = category
             
+           destination.eventUID = event?.uid
         }
     }
     @IBAction func onSegmentedControlPressed(sender: UISegmentedControl) {
