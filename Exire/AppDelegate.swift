@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
-
+import FirebaseDatabase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -17,8 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // status bar settings
+        UINavigationBar.appearance().barTintColor = UIColor.blackColor()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        
         // Override point for customization after application launch.
         FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
+        
         if User.isSignedIn(){
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

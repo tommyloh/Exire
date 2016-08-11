@@ -10,6 +10,7 @@ pod 'Alamofire', '~> 3.4'
 pod 'SwiftyJSON'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
+pod 'SDWebImage'
 # Pods for Exire
 
 end

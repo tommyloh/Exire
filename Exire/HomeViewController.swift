@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class HomeViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -19,6 +20,7 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
+        
         firebaseDatabase.child("events").observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
             if let event = Event(snapshot: snapshot){
@@ -51,23 +53,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell", forIndexPath: indexPath) as! HomeCollectionViewCell
         
         // clear previous image
-        cell.imageView.image = nil
-        
         let index = indexPath.row % listOfEvents.count
         let event = listOfEvents[index]
         if let imageURL = event.imageURL, let url = NSURL(string: imageURL){
-            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-                if error != nil{
-                    print(error)
-                    return
-                }
-                dispatch_async(dispatch_get_main_queue(), {
-                    cell.imageView.image = UIImage(data: data!)
-                    
-                    
-                })
-            }
-            task.resume()
+            cell.imageView.sd_setImageWithURL(url)
         }
         
         return cell
@@ -96,9 +85,10 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, UICollectionVi
         }else if let destination = segue.destinationViewController as? DetailViewController{
             
             if let indexPath = collectionView.indexPathsForSelectedItems()?.first{
-                let event = listOfEvents[indexPath.row]
+                let index = indexPath.row % listOfEvents.count
+                let event = listOfEvents[index]
                 destination.eventUID = event.uid
-                //                print(event.uid)
+                
                 
             }
             
@@ -120,3 +110,22 @@ class HomeViewController: UIViewController, UIScrollViewDelegate, UICollectionVi
     
     
 }
+//        cell.imageView.image = nil
+//
+//        let index = indexPath.row % listOfEvents.count
+//        let event = listOfEvents[index]
+//        if let imageURL = event.imageURL, let url = NSURL(string: imageURL){
+//            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+//                if error != nil{
+//                    print(error)
+//                    return
+//                }
+//                dispatch_async(dispatch_get_main_queue(), {
+//                    cell.imageView.image = UIImage(data: data!)
+//                    cell.imageView.sd_setImageWithURL(imageURL)
+//
+//                })
+//            }
+//            task.resume()
+//        }
+//

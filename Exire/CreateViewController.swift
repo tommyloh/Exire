@@ -10,12 +10,13 @@ import UIKit
 import Firebase
 
 
-class CreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate , UIPickerViewDataSource {
+class CreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate , UIPickerViewDataSource,UIScrollViewDelegate {
     @IBOutlet var categoryTextField: UITextField!
     @IBOutlet weak var eventDateTimeTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var eventLocationTextField: UITextField!
     @IBOutlet weak var eventNameTextField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var imageView: UIImageView!
     var data = [String]()
     var pickerData: [String] = [String]()
@@ -25,6 +26,7 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
         imagePicker.delegate = self
         picker.delegate = self
         picker.dataSource = self

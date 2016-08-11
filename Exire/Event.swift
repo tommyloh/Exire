@@ -45,6 +45,9 @@ class detailEvent{
     var uid: String?
     var imageUrl:String?
     var imageName: String?
+    var eventLocation: String?
+    var eventDate: String?
+    var eventDescription:String?
     
     init?(snapshot :FIRDataSnapshot){
         self.uid = snapshot.key
@@ -57,6 +60,14 @@ class detailEvent{
         if let eventName = dict["EventName"] as? String{
             self.imageName = eventName
         }
+//        if let eventLocation = dict["Event Location"] as? String{
+//            self.locationInfo = eventLocation
+//        }
+//        if let eventDate = dict["Event Date And Time"] as? String{
+//            self.dateTimeInfo = eventDate
+//        }
+//        if let eventDescription = dict["EventDescription"] as? String{
+//            self.descriptionInfo = eventDescription
         
     
         

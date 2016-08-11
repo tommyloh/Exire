@@ -8,10 +8,9 @@
 
 import UIKit
 import Firebase
-
+import SDWebImage
 class EventListViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var segmentController: UISegmentedControl!
     var event : detailEvent?
     var category: String!
     var listOfImages = [String]()
@@ -43,17 +42,7 @@ class EventListViewController: UIViewController,UICollectionViewDelegate,UIColle
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! EventListCollectionViewCell
         if let url = NSURL(string: listOfImages[indexPath.row]){
-            let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-                if error != nil{
-                    print(error)
-                    return
-                }
-                dispatch_async(dispatch_get_main_queue(), {
-                    cell.imageView.image = UIImage(data: data!)
-                    
-                })
-            }
-            task.resume()
+            cell.imageView.sd_setImageWithURL(url)
         }
         let eventName = listOfName[indexPath.row]
         cell.eventLabel.text = eventName
@@ -65,19 +54,5 @@ class EventListViewController: UIViewController,UICollectionViewDelegate,UIColle
             
            destination.eventUID = event?.uid
         }
-    }
-    @IBAction func onSegmentedControlPressed(sender: UISegmentedControl) {
-        
-        if segmentController.selectedSegmentIndex == 0{
-            
-        }
-        if segmentController.selectedSegmentIndex == 1{
-            
-        }
-        
-        
-        
-        
-        
     }
 }
